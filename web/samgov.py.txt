@@ -1,0 +1,19 @@
+import pandas 
+import requests
+
+response = requests.get('https://sam.gov/api/prod/sgs/v1/search/?random=1671376285329&index=opp&page=0&sort=-modifiedDate&size=25&mode=search&responseType=json&is_active=true&notice_type=r')
+
+output = response.json()['_embedded']
+print(output)
+
+df = pandas.DataFrame(output)[["results"]]
+
+dc = pandas.DataFrame()
+
+#for i in range(1,357)
+"response = requests.get('https://sam.gov/api/prod/sgs/v1/search/?random=1671376285329&index=opp&page=0&sort=-modifiedDate&size=25&mode=search&responseType=json&is_active=true&notice_type={}'.format(i))"
+
+#temp_df = pandas.DataFrame(output)[['results']]
+#df.append(temp_df,ignore_index=true)
+
+df.to_csv('samcontrac.csv')
